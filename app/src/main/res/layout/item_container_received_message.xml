@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageUser"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_centerVertical="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/baseline_send_24" />
+
+    <TextView
+        android:layout_centerInParent="true"
+        android:id="@+id/tvReceiveMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_toEndOf="@+id/imageUser"
+        android:background="@drawable/background_message_receiver"
+        android:padding="@dimen/_10sdp"
+        android:text="@string/email"
+        android:textColor="@color/White"
+        android:textSize="@dimen/_12sdp" />
+
+    <TextView
+        android:id="@+id/tvDateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageUser"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:text="dsada"
+        android:textColor="@color/LightGrey"
+        android:textSize="@dimen/_10sdp" />
+
+
+</RelativeLayout>
