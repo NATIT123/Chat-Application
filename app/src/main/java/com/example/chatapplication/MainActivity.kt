@@ -1,19 +1,16 @@
 package com.example.chatapplication
 
 import android.annotation.SuppressLint
-import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.BitmapFactory
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract.Contacts
 import android.util.Base64
 import android.view.View
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.chatapplication.Activities.BaseActivity
 import com.example.chatapplication.Activities.ChatActivity
 import com.example.chatapplication.Activities.SignInActivity
 import com.example.chatapplication.Activities.UserActivity
@@ -31,7 +28,7 @@ import com.example.chatapplication.Utils.Constants.Companion.KEY_SENDER_IMAGE
 import com.example.chatapplication.Utils.Constants.Companion.KEY_SENDER_NAME
 import com.example.chatapplication.Utils.Constants.Companion.KEY_USER_ID
 import com.example.chatapplication.Utils.PreferenceManager
-import com.example.chatapplication.adapters.RecentConversationsAdapter
+import com.example.chatapplication.Adapters.RecentConversationsAdapter
 import com.example.chatapplication.databinding.ActivityMainBinding
 import com.example.chatapplication.models.ChatMessage
 import com.example.chatapplication.models.User
@@ -39,12 +36,11 @@ import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.gson.Gson
 
-class MainActivity : AppCompatActivity(), RecentConversationsAdapter.onClickUserListerner {
+class MainActivity : BaseActivity(), RecentConversationsAdapter.onClickUserListerner {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var preferenceManager: PreferenceManager

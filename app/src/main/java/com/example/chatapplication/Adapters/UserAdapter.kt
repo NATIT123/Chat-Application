@@ -1,18 +1,15 @@
-package com.example.chatapplication.adapters
+package com.example.chatapplication.Adapters
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Base64
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chatapplication.models.User
 import com.example.chatapplication.databinding.LayoutContainerUserBinding
-import de.hdodenhof.circleimageview.CircleImageView
 
 class UserAdapter(private val mOnClickUserListener : onClickUserListerner) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 

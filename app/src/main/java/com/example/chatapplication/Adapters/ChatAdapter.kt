@@ -1,8 +1,6 @@
-package com.example.chatapplication.adapters
+package com.example.chatapplication.Adapters
 
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.util.Base64
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer

@@ -1,10 +1,7 @@
 package com.example.chatapplication.Activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chatapplication.models.User
@@ -12,12 +9,12 @@ import com.example.chatapplication.Utils.Constants.Companion.KEY_COLLECTION_USER
 import com.example.chatapplication.Utils.Constants.Companion.KEY_USER
 import com.example.chatapplication.Utils.Constants.Companion.KEY_USER_ID
 import com.example.chatapplication.Utils.PreferenceManager
-import com.example.chatapplication.adapters.UserAdapter
+import com.example.chatapplication.Adapters.UserAdapter
 import com.example.chatapplication.databinding.ActivityUserBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 
-class UserActivity : AppCompatActivity(), UserAdapter.onClickUserListerner {
+class UserActivity : BaseActivity(), UserAdapter.onClickUserListerner {
 
     private lateinit var binding: ActivityUserBinding
     private lateinit var mUserActivity: UserAdapter

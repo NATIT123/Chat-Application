@@ -24,5 +24,7 @@ class Constants {
         const val KEY_RECEIVED_NAME = "receiverName"
         const val KEY_RECEIVED_IMAGE = "receiverImage"
         const val KEY_SENDER_IMAGE = "senderImage"
+        const val KEY_AVAILABILITY = "availability"
+        const val BASE_URL = "https://fcm.googleapis.com/fcm/"
     }
 }

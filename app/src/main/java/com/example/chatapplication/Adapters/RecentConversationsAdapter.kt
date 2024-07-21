@@ -1,4 +1,4 @@
-package com.example.chatapplication.adapters
+package com.example.chatapplication.Adapters
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory

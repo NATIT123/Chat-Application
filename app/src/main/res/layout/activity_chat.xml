@@ -67,6 +67,18 @@
             android:layout_centerInParent="true"
             android:visibility="gone" />
 
+        <TextView
+            android:id="@+id/textAvailability"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/ForestGreen"
+            android:gravity="center"
+            android:padding="@dimen/_2sdp"
+            android:text="Online"
+            android:textColor="@color/White"
+            android:textSize="@dimen/_10sdp"
+            android:visibility="gone" />
+
     </RelativeLayout>
 
 
@@ -97,6 +109,7 @@
             android:layout_marginStart="@dimen/_10sdp"
             android:background="@drawable/background_icon"
             android:src="@drawable/baseline_send_24" />
+
     </LinearLayout>
 
 

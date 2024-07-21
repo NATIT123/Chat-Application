@@ -3,7 +3,6 @@ package com.example.chatapplication.Activities
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
 import android.view.View
@@ -25,7 +24,9 @@ import com.example.chatapplication.Utils.Constants.Companion.KEY_SENDER_NAME
 import com.example.chatapplication.Utils.Constants.Companion.KEY_USER
 import com.example.chatapplication.Utils.Constants.Companion.KEY_USER_ID
 import com.example.chatapplication.Utils.PreferenceManager
-import com.example.chatapplication.adapters.ChatAdapter
+import com.example.chatapplication.Adapters.ChatAdapter
+import com.example.chatapplication.Utils.Constants.Companion.KEY_AVAILABILITY
+import com.example.chatapplication.Utils.Constants.Companion.KEY_COLLECTION_USERS
 import com.example.chatapplication.databinding.ActivityChatBinding
 import com.example.chatapplication.models.ChatMessage
 import com.example.chatapplication.models.User
@@ -36,8 +37,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.gson.Gson
 import java.util.Date
+import java.util.Objects
 
-class ChatActivity : AppCompatActivity() {
+class ChatActivity : BaseActivity() {
 
     private lateinit var binding: ActivityChatBinding
 
@@ -49,6 +51,8 @@ class ChatActivity : AppCompatActivity() {
     private var listChatMessage = mutableListOf<ChatMessage>()
 
     private var conversionId: String? = null
+
+    private var isReceiverAvailable = false
 
 
     @SuppressLint("NotifyDataSetChanged")
@@ -83,6 +87,33 @@ class ChatActivity : AppCompatActivity() {
                 checkForConversion()
             }
         }
+
+    private fun listenAvailabilityOfReceiver() {
+        db.collection(KEY_COLLECTION_USERS).document(receiverUser?.id!!)
+            .addSnapshotListener(this@ChatActivity) { value, error ->
+                if (error != null) {
+                    return@addSnapshotListener
+                }
+                if (value != null) {
+                    if (value.getLong(KEY_AVAILABILITY) != null) {
+                        val availability = Objects.requireNonNull(
+                            value.getLong(KEY_AVAILABILITY)
+                        )?.toInt()
+                        isReceiverAvailable = availability == 1
+                    }
+                }
+                if (isReceiverAvailable) {
+                    binding.textAvailability.visibility = View.VISIBLE
+                } else {
+                    binding.textAvailability.visibility = View.GONE
+                }
+            }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        listenAvailabilityOfReceiver()
+    }
 
     private fun listenMessages() {
         db.collection(KEY_COLLECTION_CHAT)
