@@ -31,7 +31,7 @@ interface ApiService {
         }
     }
 
-    @POST("most-popular")
+    @POST("send")
     fun sendMessage(
         @HeaderMap headers: HashMap<String, String>,
         @Body messageBody: String
