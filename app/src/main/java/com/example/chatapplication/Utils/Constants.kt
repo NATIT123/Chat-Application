@@ -26,5 +26,7 @@ class Constants {
         const val KEY_SENDER_IMAGE = "senderImage"
         const val KEY_AVAILABILITY = "availability"
         const val BASE_URL = "https://fcm.googleapis.com/fcm/"
+        const val REMOTE_MSG_AUTHORIZATION = "Authorization"
+        const val REMOTE_MSG_CONTENT_TYPE = "Content-Type"
     }
 }

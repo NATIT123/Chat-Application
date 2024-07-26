@@ -22,17 +22,24 @@ open class BaseActivity : AppCompatActivity() {
         preferenceManager = PreferenceManager(applicationContext)
         preferenceManager.instance()
         db = FirebaseFirestore.getInstance()
-        dbRef =
-            db.collection(KEY_COLLECTION_USERS).document(preferenceManager.getString(KEY_USER_ID)!!)
+        dbRef = db.collection(KEY_COLLECTION_USERS).document(preferenceManager.getString(KEY_USER_ID)!!)
     }
 
     override fun onResume() {
         super.onResume()
+        preferenceManager = PreferenceManager(applicationContext)
+        preferenceManager.instance()
+        db = FirebaseFirestore.getInstance()
+        dbRef = db.collection(KEY_COLLECTION_USERS).document(preferenceManager.getString(KEY_USER_ID)!!)
         dbRef.update(KEY_AVAILABILITY, 1)
     }
 
     override fun onPause() {
         super.onPause()
+        preferenceManager = PreferenceManager(applicationContext)
+        preferenceManager.instance()
+        db = FirebaseFirestore.getInstance()
+        dbRef = db.collection(KEY_COLLECTION_USERS).document(preferenceManager.getString(KEY_USER_ID)!!)
         dbRef.update(KEY_AVAILABILITY, 0)
     }
 }

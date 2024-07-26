@@ -27,6 +27,7 @@ import com.example.chatapplication.Utils.PreferenceManager
 import com.example.chatapplication.Adapters.ChatAdapter
 import com.example.chatapplication.Utils.Constants.Companion.KEY_AVAILABILITY
 import com.example.chatapplication.Utils.Constants.Companion.KEY_COLLECTION_USERS
+import com.example.chatapplication.Utils.Constants.Companion.KEY_FCM_TOKEN
 import com.example.chatapplication.databinding.ActivityChatBinding
 import com.example.chatapplication.models.ChatMessage
 import com.example.chatapplication.models.User
@@ -101,6 +102,7 @@ class ChatActivity : BaseActivity() {
                         )?.toInt()
                         isReceiverAvailable = availability == 1
                     }
+                    receiverUser!!.token = value.getString(KEY_FCM_TOKEN).toString()
                 }
                 if (isReceiverAvailable) {
                     binding.textAvailability.visibility = View.VISIBLE
